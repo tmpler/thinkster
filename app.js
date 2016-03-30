@@ -3,6 +3,9 @@ var app = angular.module('flapperNews', []);
 app.controller('MainCtrl', [
 '$scope',
 function($scope){
+  $scope.incrementUpvotes = function(post) {
+    post.upvotes += 1;
+  };
   $scope.test = 'Hello world!';
   $scope.posts = [
     {title: 'post 1', upvotes: 5},
