@@ -10,6 +10,12 @@ function($stateProvider, $urlRouterProvider) {
       url: '/home',
       templateUrl: '/home.html',
       controller: 'MainCtrl'
+    })
+
+    .state('posts', {
+      url: '/posts/{id}',
+      templateUrl: '/posts.html',
+      controller: 'PostsCtrl'
     });
 
   $urlRouterProvider.otherwise('home');
@@ -24,8 +30,9 @@ app.factory('posts', [function(){
 
 app.controller('MainCtrl', [
 '$scope',
+'$stateParams',
 'posts',
-function($scope, posts){
+function($scope, $stateParams, posts){
   $scope.posts = posts.posts;
   $scope.incrementUpvotes = function(post) {
     post.upvotes += 1;
